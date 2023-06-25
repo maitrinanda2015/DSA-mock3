@@ -1,0 +1,50 @@
+1.Implement a stack using an array in Java. Include the necessary methods such as push, pop, and isEmpty.
+
+public class Stack {
+    private int[] arr;
+    private int top;
+    private int capacity;
+
+    public Stack(int size) {
+        capacity = size;
+        arr = new int[capacity];
+        top = -1;
+    }
+
+    public void push(int value) {
+        if (top == capacity - 1) {
+            System.out.println("Stack Overflow. Cannot push element: " + value);
+            return;
+        }
+        arr[++top] = value;
+        System.out.println("Pushed element: " + value);
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("Stack Underflow. Cannot pop element.");
+            return -1;
+        }
+        int poppedElement = arr[top--];
+        System.out.println("Popped element: " + poppedElement);
+        return poppedElement;
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public static void main(String[] args) {
+        Stack stack = new Stack(5);
+
+        stack.push(1);
+        stack.pop();
+        stack.push(2);
+        stack.push(3);
+        stack.pop();
+        stack.push(4);
+        stack.pop();
+        stack.pop();
+        stack.push(5);
+    }
+}
